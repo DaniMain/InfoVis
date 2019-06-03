@@ -1,0 +1,22 @@
+[
+	{"group":"banana", "Amazzonia":"811", "Burundi":"694", "Congo":"446", "Dominica":"104", "Ecuador":"693"},
+	{"group":"poaecce", "Amazzonia":"232", "Burundi":"90", "Congo":"722", "Dominica":"941", "Ecuador":"179"},
+	{"group":"sorgho", "Amazzonia":"229", "Burundi":"607", "Congo":"297", "Dominica":"753", "Ecuador":"194"},
+	{"group":"carot", "Amazzonia":"178", "Burundi":"933", "Congo":"241", "Dominica":"903", "Ecuador":"989"},
+	{"group":"apple", "Amazzonia":"278", "Burundi":"931", "Congo":"338", "Dominica":"592", "Ecuador":"378"},
+	{"group":"mango", "Amazzonia":"276", "Burundi":"181", "Congo":"765", "Dominica":"857", "Ecuador":"785"},
+	{"group":"olive", "Amazzonia":"150", "Burundi":"289", "Congo":"554", "Dominica":"249", "Ecuador":"981"},
+	{"group":"ananas", "Amazzonia":"120", "Burundi":"787", "Congo":"423", "Dominica":"148", "Ecuador":"499"},
+	{"group":"strawberry", "Amazzonia":"787", "Burundi":"661", "Congo":"730", "Dominica":"269", "Ecuador":"716"},
+	{"group":"orange", "Amazzonia":"518", "Burundi":"851", "Congo":"431", "Dominica":"902", "Ecuador":"166"},
+	{"group":"cucumber", "Amazzonia":"801", "Burundi":"748", "Congo":"579", "Dominica":"664", "Ecuador":"424"},
+	{"group":"kiwi", "Amazzonia":"255", "Burundi":"188", "Congo":"842", "Dominica":"594", "Ecuador":"751"},
+	{"group":"susina", "Amazzonia":"301", "Burundi":"782", "Congo":"656", "Dominica":"854", "Ecuador":"527"},
+	{"group":"watermelon", "Amazzonia":"663", "Burundi":"493", "Congo":"917", "Dominica":"337", "Ecuador":"551"},
+	{"group":"melon", "Amazzonia":"510", "Burundi":"537", "Congo":"612", "Dominica":"541", "Ecuador":"166"},
+	{"group":"raspberry", "Amazzonia":"169", "Burundi":"850", "Congo":"322", "Dominica":"863", "Ecuador":"981"},
+	{"group":"cherry", "Amazzonia":"400", "Burundi":"758", "Congo":"945", "Dominica":"500", "Ecuador":"793"},
+	{"group":"papaya", "Amazzonia":"877", "Burundi":"257", "Congo":"895", "Dominica":"215", "Ecuador":"852"},
+	{"group":"avocado", "Amazzonia":"235", "Burundi":"832", "Congo":"451", "Dominica":"123", "Ecuador":"778"},
+	{"group":"maracuja", "Amazzonia":"967", "Burundi":"163", "Congo":"269", "Dominica":"196", "Ecuador":"325"}
+]
