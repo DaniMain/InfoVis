@@ -13,7 +13,7 @@ var svg = d3.select("#my_dataviz")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Parse the Data
-d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis1/master/mydata.json", function(data) {
+d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis/master/data/mydata.json", function(data) {
 
   // List of subgroups = grops of json file
   var subgroups = new Array(5);
