@@ -26,8 +26,6 @@ d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis/master/data/mydata.j
     }
   }
 
-  console.log("ciao");
-
   // List of groups = value of the first column called group
   var groups = d3.map(data, function(d){return(d.group)}).keys()
 
