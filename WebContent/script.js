@@ -37,6 +37,7 @@ d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis1/master/data/mydata.
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).tickSizeOuter(0));
+  d3.selectAll("line").remove();
 
   // Y axis
   var y = d3.scaleLinear()
@@ -59,7 +60,8 @@ d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis1/master/data/mydata.
   var onclick = function(d) {
 
     var alldata=d3.select(this.parentNode).datum(); // all data in json file
-    var scale = d3.scaleLinear().domain([0,1000]).range([height,0]);
+    var scale = d3.scaleLinear().domain([0,4000]).range([height,0]);
+    var scaleLabel = d3.scaleLinear().domain([0,4000]).range([0,height]);
 
     for (var i = 0; i < alldata.length; i++) {
       var bottom=alldata[i][0];
@@ -74,12 +76,18 @@ d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis1/master/data/mydata.
           var stateValue = parseInt(alldata[i].data[state]);
           var stateHeight = (stateValue + offset);
           var newHeight = (stateHeight-bottom);
-          var realHeight = scale(newHeight/4);
+          var realHeight = scale(newHeight);
           offset+=stateValue;
           d3.select("."+state)
             .selectAll("#"+group).transition().ease(d3.easeSin).duration(1000)
             .attr("y",realHeight);
         }
+
+        d3.selectAll("text")
+          .filter(function(){
+            return d3.select(this).text()==group;
+          }).transition().ease(d3.easeSin).duration(1000)
+          .attr("y",scaleLabel(bottom)+9);
 
       }
 
