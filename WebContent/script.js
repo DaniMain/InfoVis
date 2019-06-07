@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 260, left: 50},
+var margin = {top: 10, right: 60, bottom: 260, left: 50},
     width = 1280 - margin.left - margin.right,
     height = 540 - margin.top - margin.bottom;
 
@@ -14,6 +14,21 @@ var svg = d3.select("#my_dataviz")
 
 // Parse the Data
 d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis1/master/data/mydata.json", function(data) {
+
+  // maxHeight = value of bar with max height
+  // is used as top range in all scales
+  var maxHeight = 0;
+  for (var i = 0; i < data.length; i++) {
+    var newData = data[i];
+    var values = Object.values(newData);
+    var totalHeight = 0;
+    for (var j = 1; j < values.length; j++) {
+      totalHeight += parseInt(values[j]);
+    }
+    if (totalHeight>maxHeight)
+      maxHeight = totalHeight;
+  }
+  maxHeight += (maxHeight/10);
 
   // List of subgroups = groups of json file
   var subgroups = new Array(5);
@@ -41,7 +56,7 @@ d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis1/master/data/mydata.
 
   // Y axis
   var y = d3.scaleLinear()
-    .domain([0, 4000])
+    .domain([0, maxHeight])
     .range([ height, 0 ]);
   svg.append("g")
     .call(d3.axisLeft(y));
@@ -59,9 +74,9 @@ d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis1/master/data/mydata.
   // What happens when user click a bar
   var onclick = function(d) {
 
-    var alldata=d3.select(this.parentNode).datum(); // all data in json file
-    var scale = d3.scaleLinear().domain([0,4000]).range([height,0]);
-    var scaleLabel = d3.scaleLinear().domain([0,4000]).range([0,height]);
+    var alldata = d3.select(this.parentNode).datum(); // all data in json file
+    var scale = d3.scaleLinear().domain([0,maxHeight]).range([height,0]);
+    var scaleLabel = d3.scaleLinear().domain([0,maxHeight]).range([0,height]);
 
     for (var i = 0; i < alldata.length; i++) {
       var bottom=alldata[i][0];
@@ -114,5 +129,32 @@ d3.json("https://raw.githubusercontent.com/DaniMain/InfoVis1/master/data/mydata.
         .attr("width",x.bandwidth())
         .attr("stroke", "grey")
       .on("click", onclick)
+
+  //show legend
+  var keys = [];
+  for (key in data[0]) {
+  	if (key != "id")
+  		keys.push(key);
+  }
+  var legend = svg.append("g")
+                  .attr("font-family", "sans-serif")
+                  .attr("font-size", 10)
+                  .attr("text-anchor", "end")
+                  .selectAll("g")
+                    .data(keys.slice())
+                      .enter().append("g")
+                        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")";});
+  legend.append("rect")
+        .data(stackedData)
+        .attr("x", width + margin.right - 19)
+        .attr("width", 19)
+        .attr("height", 19)
+        .attr("fill", function(d) { return color(d.key); });
+  legend.append("text")
+        .data(stackedData)
+        .attr("x", width + margin.right - 24)
+        .attr("y", 9.5)
+        .attr("dy","0.32em")
+        .text(function(d) { return d.key; });
 
 })
